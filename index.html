@@ -345,21 +345,6 @@
             gap: 10px;
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
         /* Footer */
         footer {
             background-color: var(--secondary);
@@ -934,63 +919,7 @@
             color: var(--gray);
         }
         
-        /* === NEW CSS ADDITIONS ONLY (For form functionality) === */
-        
-        /* Form message styles */
-        .form-message {
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: center;
-            display: none;
-        }
-        
-        .form-message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-        
-        .form-message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-        
-        .form-loading {
-            display: none;
-            text-align: center;
-            padding: 10px;
-            color: var(--primary);
-        }
-        
-        .form-loading.active {
-            display: block;
-        }
-        
-        .loading-spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .btn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
+        /* === REMOVED FORM-RELATED CSS === */
         
         /* Business hours styling */
         .business-hours {
@@ -1019,26 +948,6 @@
             font-style: italic;
         }
         
-        /* Field error styling */
-        .field-error {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: -15px;
-            margin-bottom: 15px;
-        }
-        
-        /* Contact form select styling */
-        .contact-form select {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: white;
-            cursor: pointer;
-        }
-        
         /* Additional button colors */
         .btn-email {
             background-color: #34b7f1;
@@ -1054,41 +963,6 @@
         
         .btn-map:hover {
             background-color: #5a6268;
-        }
-
-        /* Delivery options styling */
-        .delivery-options {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: rgba(52, 183, 241, 0.1);
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-        }
-        
-        .delivery-options h4 {
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .delivery-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .delivery-buttons .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .delivery-note {
-            font-size: 14px;
-            color: var(--gray);
-            margin-top: 10px;
-            font-style: italic;
         }
     </style>
 </head>
@@ -1438,65 +1312,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3>Send a Message</h3>
-                    <p>Fill out the form below and we'll get back to you within 24 hours.</p>
-                    
-                    <form id="contactForm">
-                        <input type="text" id="contactName" placeholder="Your Name *" required>
-                        <input type="email" id="contactEmail" placeholder="Your Email *" required>
-                        <input type="tel" id="contactPhone" placeholder="Your Phone Number *" required>
-                        <select id="contactService" required>
-                            <option value="">Select Service Interested In *</option>
-                            <option value="Salt Chlorinators">Salt Chlorinators</option>
-                            <option value="Pool Renovation">Pool Renovation</option>
-                            <option value="Paving">All Ranges of Paving</option>
-                            <option value="Resealing & Cleaning">Resealing & Cleaning</option>
-                            <option value="Fibreglass Renovations">Fibreglass Renovations</option>
-                            <option value="Repairs & Maintenance">Repairs & Maintenance</option>
-                            <option value="Solar Heating">Solar Heating</option>
-                            <option value="Home Renovation">Home Renovation</option>
-                            <option value="Koi Ponds & Water Features">Koi Ponds & Water Features</option>
-                            <option value="New Pool Construction">New Pool Construction</option>
-                            <option value="Consultation">Consultation/Quote</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <textarea id="contactMessage" placeholder="Your Message * (Please include details like pool size, location, budget if known)" required></textarea>
-                        
-                        <div class="form-loading" id="formLoading">
-                            <div class="loading-spinner"></div>
-                            <p>Saving your message...</p>
-                        </div>
-                        
-                        <div class="form-message" id="formSuccess">
-                            <i class="fas fa-check-circle"></i> Thank you! Your message has been saved. Please choose how to send it:
-                        </div>
-                        
-                        <!-- Delivery options - shown after form is completed -->
-                        <div class="delivery-options" id="deliveryOptions" style="display: none;">
-                            <h4>Send Message to Wayne</h4>
-                            <p>Your message has been saved. Choose how you want to send it:</p>
-                            <div class="delivery-buttons">
-                                <a href="#" class="btn btn-whatsapp" id="sendWhatsAppBtn">
-                                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
-                                </a>
-                                <a href="#" class="btn btn-call" id="sendSMSBtn">
-                                    <i class="fas fa-sms"></i> Send via SMS
-                                </a>
-                                <button type="button" class="btn" id="copyMessageBtn">
-                                    <i class="fas fa-copy"></i> Copy Message
-                                </button>
-                            </div>
-                            <p class="delivery-note">
-                                <i class="fas fa-info-circle"></i> Click one of the buttons above to send your inquiry directly to Wayne.
-                            </p>
-                        </div>
-                        
-                        <button type="submit" class="btn" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i> Save & Send Message
-                        </button>
-                    </form>
-                </div>
+                <!-- FORM SECTION REMOVED -->
             </div>
         </div>
     </section>
@@ -1715,8 +1531,12 @@
         const heroImage = document.getElementById('heroImage');
         const adminPassword = document.getElementById('adminPassword');
         
-        // Password for admin access (default is empty for easy access)
-        let savedPassword = localStorage.getItem('wayneIntendAdminPassword') || '';
+        // Password for admin access - SET TO THE STATIC PASSWORD "24tafadzwas"
+        let savedPassword = localStorage.getItem('wayneIntendAdminPassword') || '24tafadzwas';
+        // Ensure the static password is saved to localStorage
+        if (!localStorage.getItem('wayneIntendAdminPassword')) {
+            localStorage.setItem('wayneIntendAdminPassword', '24tafadzwas');
+        }
         
         // Portfolio data stored in localStorage
         let portfolioData = JSON.parse(localStorage.getItem('wayneIntendPortfolio')) || {
@@ -1785,34 +1605,6 @@
             }
         ];
         
-        // === CONTACT FORM FUNCTIONALITY ===
-        
-        // Contact form elements
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const formLoading = document.getElementById('formLoading');
-        const formSuccess = document.getElementById('formSuccess');
-        const deliveryOptions = document.getElementById('deliveryOptions');
-        const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
-        const sendSMSBtn = document.getElementById('sendSMSBtn');
-        const copyMessageBtn = document.getElementById('copyMessageBtn');
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        const callBtn = document.getElementById('callBtn');
-        const contactName = document.getElementById('contactName');
-        const contactEmail = document.getElementById('contactEmail');
-        const contactPhone = document.getElementById('contactPhone');
-        const contactService = document.getElementById('contactService');
-        const contactMessage = document.getElementById('contactMessage');
-        
-        // Contact submissions data
-        let contactSubmissions = JSON.parse(localStorage.getItem('wayneIntendSubmissions')) || [];
-        
-        // Store the last saved message for sending
-        let lastSavedMessage = null;
-        
-        // Wayne's phone number (South Africa format)
-        const waynePhoneNumber = '+27630849731';
-        
         // Initialize everything on page load
         document.addEventListener('DOMContentLoaded', function() {
             updatePortfolioDisplay();
@@ -1832,9 +1624,6 @@
             
             updateTestimonialsDisplay();
             updateTestimonialStats();
-            
-            // Load form draft if exists
-            loadFormDraft();
             
             // Update submissions count
             updateSubmissionsCount();
@@ -2049,385 +1838,15 @@
             }
         });
         
-        // === CONTACT FORM FUNCTIONALITY ===
-        
-        // Submit contact form
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Hide previous messages and delivery options
-            formSuccess.style.display = 'none';
-            deliveryOptions.style.display = 'none';
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-            formLoading.classList.add('active');
-            
-            // Get form data
-            const formData = {
-                name: contactName.value.trim(),
-                email: contactEmail.value.trim(),
-                phone: contactPhone.value.trim(),
-                service: contactService.value,
-                message: contactMessage.value.trim(),
-                date: new Date().toLocaleString(),
-                pageUrl: window.location.href
-            };
-            
-            // Validate form
-            if (!validateForm(formData)) {
-                resetFormState();
-                return;
-            }
-            
-            try {
-                // Save submission to localStorage
-                saveSubmission(formData);
-                
-                // Store the message for sending
-                lastSavedMessage = formData;
-                
-                // Generate the formatted message for sending
-                const formattedMessage = generateFormattedMessage(formData);
-                
-                // Set up the delivery buttons
-                setupDeliveryButtons(formattedMessage);
-                
-                // Show success message
-                formSuccess.style.display = 'block';
-                deliveryOptions.style.display = 'block';
-                
-                // Scroll to delivery options
-                deliveryOptions.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-            } catch (error) {
-                console.error('Form submission error:', error);
-                
-                // Create a dynamic error message element
-                const errorMessage = document.createElement('div');
-                errorMessage.className = 'form-message error';
-                errorMessage.id = 'formError';
-                errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> There was an error saving your message. Please try again or contact us directly.';
-                errorMessage.style.display = 'block';
-                
-                // Insert after the form-loading div
-                formLoading.parentNode.insertBefore(errorMessage, formLoading.nextSibling);
-                
-            } finally {
-                resetFormState();
-            }
-        });
-        
-        function generateFormattedMessage(formData) {
-            const timestamp = new Date().toLocaleString('en-ZA', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            
-            return `📞 NEW INQUIRY - Wayne Intend Pools
-
-👤 Name: ${formData.name}
-📧 Email: ${formData.email}
-📱 Phone: ${formData.phone}
-🔧 Service: ${formData.service}
-
-📝 Message:
-${formData.message}
-
-📅 Submitted: ${timestamp}
-🌐 From Website: ${formData.pageUrl}
-
-#WayneIntendPools #PoolInquiry`;
-        }
-        
-        function setupDeliveryButtons(formattedMessage) {
-            // WhatsApp button
-            const whatsappUrl = `https://wa.me/${waynePhoneNumber}?text=${encodeURIComponent(formattedMessage)}`;
-            sendWhatsAppBtn.href = whatsappUrl;
-            sendWhatsAppBtn.target = '_blank';
-            
-            // SMS button (using sms: protocol)
-            const smsUrl = `sms:${waynePhoneNumber}?body=${encodeURIComponent(formattedMessage)}`;
-            sendSMSBtn.href = smsUrl;
-            
-            // Copy button functionality
-            copyMessageBtn.onclick = function() {
-                navigator.clipboard.writeText(formattedMessage).then(function() {
-                    // Change button text temporarily
-                    const originalHTML = copyMessageBtn.innerHTML;
-                    copyMessageBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                    copyMessageBtn.style.backgroundColor = '#28a745';
-                    
-                    setTimeout(function() {
-                        copyMessageBtn.innerHTML = originalHTML;
-                        copyMessageBtn.style.backgroundColor = '';
-                    }, 2000);
-                    
-                    alert('Message copied to clipboard! You can now paste it into WhatsApp, SMS, or any messaging app.');
-                }).catch(function(err) {
-                    console.error('Failed to copy: ', err);
-                    alert('Failed to copy message. Please try again.');
-                });
-            };
-        }
-        
-        function validateForm(data) {
-            // Clear previous errors
-            clearFieldErrors();
-            
-            let isValid = true;
-            
-            // Validate name
-            if (!data.name) {
-                showFieldError(contactName, 'Name is required');
-                isValid = false;
-            }
-            
-            // Validate email
-            if (!data.email) {
-                showFieldError(contactEmail, 'Email is required');
-                isValid = false;
-            } else if (!isValidEmail(data.email)) {
-                showFieldError(contactEmail, 'Please enter a valid email address');
-                isValid = false;
-            }
-            
-            // Validate phone
-            if (!data.phone) {
-                showFieldError(contactPhone, 'Phone number is required');
-                isValid = false;
-            } else if (!isValidPhone(data.phone)) {
-                showFieldError(contactPhone, 'Please enter a valid phone number');
-                isValid = false;
-            }
-            
-            // Validate service
-            if (!data.service) {
-                showFieldError(contactService, 'Please select a service');
-                isValid = false;
-            }
-            
-            // Validate message
-            if (!data.message) {
-                showFieldError(contactMessage, 'Message is required');
-                isValid = false;
-            } else if (data.message.length < 10) {
-                showFieldError(contactMessage, 'Message should be at least 10 characters');
-                isValid = false;
-            }
-            
-            return isValid;
-        }
-        
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-        
-        function isValidPhone(phone) {
-            // Remove all non-digits for validation
-            const digitsOnly = phone.replace(/\D/g, '');
-            return digitsOnly.length >= 10;
-        }
-        
-        function showFieldError(field, message) {
-            field.style.borderColor = '#dc3545';
-            
-            let errorDiv = field.parentNode.querySelector('.field-error');
-            if (!errorDiv) {
-                errorDiv = document.createElement('div');
-                errorDiv.className = 'field-error';
-                errorDiv.style.color = '#dc3545';
-                errorDiv.style.fontSize = '14px';
-                errorDiv.style.marginTop = '-10px';
-                errorDiv.style.marginBottom = '10px';
-                field.parentNode.insertBefore(errorDiv, field.nextSibling);
-            }
-            
-            errorDiv.textContent = message;
-        }
-        
-        function clearFieldErrors() {
-            const fields = [contactName, contactEmail, contactPhone, contactService, contactMessage];
-            fields.forEach(field => {
-                field.style.borderColor = '#ddd';
-                const errorDiv = field.parentNode.querySelector('.field-error');
-                if (errorDiv) {
-                    errorDiv.remove();
-                }
-            });
-        }
-        
-        function saveSubmission(data) {
-            const submission = {
-                ...data,
-                id: Date.now(),
-                timestamp: new Date().toISOString()
-            };
-            
-            contactSubmissions.unshift(submission); // Add to beginning
-            localStorage.setItem('wayneIntendSubmissions', JSON.stringify(contactSubmissions));
-            
-            // Update submissions count
-            updateSubmissionsCount();
-        }
-        
-        function resetFormState() {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Save & Send Message';
-            formLoading.classList.remove('active');
-        }
-        
-        // Phone number formatting
-        contactPhone.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            // Format South African phone numbers
-            if (value.length > 0) {
-                if (value.startsWith('0')) {
-                    value = '+27' + value.substring(1);
-                }
-                
-                // Format with spaces
-                if (value.length > 2) value = value.substring(0, 3) + ' ' + value.substring(3);
-                if (value.length > 7) value = value.substring(0, 7) + ' ' + value.substring(7);
-                if (value.length > 11) value = value.substring(0, 11) + ' ' + value.substring(11);
-            }
-            
-            e.target.value = value;
-        });
-        
-        // Auto-save form draft
-        let saveTimeout;
-        const formInputs = [contactName, contactEmail, contactPhone, contactService, contactMessage];
-        
-        formInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                clearTimeout(saveTimeout);
-                saveTimeout = setTimeout(saveFormDraft, 1000);
-            });
-        });
-        
-        function saveFormDraft() {
-            const formData = {
-                name: contactName.value,
-                email: contactEmail.value,
-                phone: contactPhone.value,
-                service: contactService.value,
-                message: contactMessage.value
-            };
-            
-            localStorage.setItem('contactFormDraft', JSON.stringify(formData));
-        }
-        
-        function loadFormDraft() {
-            const savedDraft = localStorage.getItem('contactFormDraft');
-            if (savedDraft) {
-                const formData = JSON.parse(savedDraft);
-                Object.keys(formData).forEach(key => {
-                    const element = document.getElementById(`contact${key.charAt(0).toUpperCase() + key.slice(1)}`);
-                    if (element && formData[key]) {
-                        element.value = formData[key];
-                    }
-                });
-            }
-        }
-        
-        // Enhanced WhatsApp functionality for the main button
-        whatsappBtn.addEventListener('click', function() {
-            const name = contactName.value || '';
-            const service = contactService.value || '';
-            
-            if (name || service) {
-                let message = "Hi Wayne Intend Pools! ";
-                if (name) message += `I'm ${name}. `;
-                if (service) message += `I'm interested in ${service} services. `;
-                message += "I saw your website and would like more information.";
-                
-                const encodedMessage = encodeURIComponent(message);
-                this.href = `https://wa.me/${waynePhoneNumber}?text=${encodedMessage}`;
-            }
-            
-            // Track WhatsApp click
-            logWhatsAppEvent();
-        });
-        
-        // Enhanced call functionality
-        callBtn.addEventListener('click', function(e) {
-            // Track call initiation
-            logCallEvent();
-            
-            // Optional: Add confirmation dialog
-            if (window.confirm("Call Wayne Intend Pools at +27 63 084 9731?")) {
-                // Allow the default action (calling)
-            } else {
-                e.preventDefault();
-            }
-        });
-        
-        // Track email clicks
-        document.querySelectorAll('a[href^="mailto:"]').forEach(emailLink => {
-            emailLink.addEventListener('click', function() {
-                logEmailEvent();
-            });
-        });
-        
-        // Analytics functions
-        function logCallEvent() {
-            try {
-                const calls = JSON.parse(localStorage.getItem('wayneIntendCalls')) || [];
-                calls.push({
-                    timestamp: new Date().toISOString(),
-                    type: 'call',
-                    number: waynePhoneNumber
-                });
-                localStorage.setItem('wayneIntendCalls', JSON.stringify(calls));
-            } catch (e) {
-                console.log('Could not log call:', e);
-            }
-        }
-        
-        function logWhatsAppEvent() {
-            try {
-                const whatsappClicks = JSON.parse(localStorage.getItem('wayneIntendWhatsApp')) || [];
-                whatsappClicks.push({
-                    timestamp: new Date().toISOString(),
-                    type: 'whatsapp'
-                });
-                localStorage.setItem('wayneIntendWhatsApp', JSON.stringify(whatsappClicks));
-            } catch (e) {
-                console.log('Could not log WhatsApp click:', e);
-            }
-        }
-        
-        function logEmailEvent() {
-            try {
-                const emails = JSON.parse(localStorage.getItem('wayneIntendEmails')) || [];
-                emails.push({
-                    timestamp: new Date().toISOString(),
-                    type: 'email'
-                });
-                localStorage.setItem('wayneIntendEmails', JSON.stringify(emails));
-            } catch (e) {
-                console.log('Could not log email:', e);
-            }
-        }
-        
         // === ADMIN PANEL FUNCTIONALITY ===
         
         // Admin panel toggle
         adminBtn.addEventListener('click', function() {
-            // Check if password is set
-            if (savedPassword) {
-                const enteredPassword = prompt('Enter admin password:');
-                if (enteredPassword !== savedPassword) {
-                    alert('Incorrect password');
-                    return;
-                }
+            // Check password
+            const enteredPassword = prompt('Enter admin password:');
+            if (enteredPassword !== savedPassword) {
+                alert('Incorrect password');
+                return;
             }
             adminModal.style.display = 'flex';
             loadSubmissions(); // Load submissions when opening admin panel
@@ -2710,6 +2129,7 @@ ${formData.message}
         });
         
         // === CONTACT SUBMISSIONS MANAGEMENT ===
+        let contactSubmissions = JSON.parse(localStorage.getItem('wayneIntendSubmissions')) || [];
         
         function loadSubmissions() {
             const submissionsList = document.getElementById('submissionsList');
@@ -2814,7 +2234,7 @@ ${formData.message}
         function clearAllSubmissions() {
             if (confirm('Are you sure you want to delete ALL contact submissions? This cannot be undone.')) {
                 contactSubmissions = [];
-                localStorage.removeItem('wayneIntewndSubmissions');
+                localStorage.removeItem('wayneIntendSubmissions');
                 loadSubmissions();
                 updateSubmissionsCount();
                 alert('All submissions cleared!');
